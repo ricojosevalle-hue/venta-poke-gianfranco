@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Administrador | Poke-Gianfranco</title>
+
+<style>
+
+:root {
+  --fondo: #080d1c;
+  --tarjeta: #14213b;
+  --azul: #00bfff;
+  --amarillo: #ffd83d;
+  --texto: #ffffff;
+  --gris: #aab7d0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+header {
+  padding: 22px;
+  text-align: center;
+  background: #101a30;
+  border-bottom: 2px solid var(--azul);
+}
+
+header h1 {
+  margin: 0;
+  color: var(--amarillo);
+  font-size: 25px;
+}
+
+header p {
+  color: var(--gris);
+  font-size: 13px;
+}
+
+.contenedor {
+  width: 94%;
+  max-width: 1150px;
+  margin: 30px auto;
+}
+
+.panel {
+  background: var(--tarjeta);
+  border: 1px solid #24517a;
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.panel h2 {
+  margin-top: 0;
+  color: var(--azul);
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo.completo {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 13px;
+  background: #091429;
+  color: white;
+  border: 1px solid #315477;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 1px solid var(--azul);
+}
+
+.vista-imagen {
+  width: 180px;
+  height: 180px;
+  border: 1px dashed var(--azul);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #091429;
+  color: var(--gris);
+  font-size: 13px;
+}
+
+.vista-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+button,
+.enlace {
+  border: none;
+  padding: 13px 20px;
+  border-radius: 9px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.guardar {
+  background: linear-gradient(135deg, #00bfff, #1769ff);
+  color: white;
+}
+
+.cancelar {
+  background: #39465b;
+  color: white;
+}
+
+.enlace {
+  display: inline-block;
+  background: #263a59;
+  color: white;
+  text-decoration: none;
+}
+
+.lista {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.producto {
+  background: #0b162c;
+  border: 1px solid #254a70;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.producto img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #12294c;
+}
+
+.sin-imagen {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #12294c;
+  font-size: 65px;
+}
+
+.producto-info {
+  padding: 17px;
+}
+
+.producto-info h3 {
+  margin: 0 0 10px;
+}
+
+.producto-info p {
+  color: var(--gris);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.precio {
+  color: var(--amarillo);
+  font-size: 22px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.acciones {
+  display: flex;
+  gap: 10px;
+}
+
+.editar {
+  flex: 1;
+  background: #1769ff;
+  color: white;
+}
+
+.eliminar {
+  flex: 1;
+  background: #d93650;
+  color: white;
+}
+
+.aviso {
+  background: #292414;
+  border: 1px solid #8b741e;
+  border-radius: 10px;
+  padding: 15px;
+  color: #ffe59a;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.contador {
+  color: var(--gris);
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+@media(max-width: 800px) {
+  .lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 600px) {
+  .formulario,
+  .lista {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  .vista-imagen {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>⚡ POKE-GIANFRANCO</h1>
+  <p>PANEL DE ADMINISTRACIÓN</p>
+</header>
+
+<main class="contenedor">
+
+  <div class="aviso" id="estado">🔐 Inicia sesión para administrar las publicaciones.</div>
+  <section class="panel" id="panelLogin">
+    <h2>🔐 Acceso de administrador</h2>
+    <form id="loginForm" class="formulario">
+      <div class="campo"><label for="correo">Correo electrónico</label><input id="correo" type="email" autocomplete="username" required></div>
+      <div class="campo"><label for="clave">Contraseña</label><input id="clave" type="password" autocomplete="current-password" required></div>
+      <button class="guardar" type="submit">Iniciar sesión</button>
+    </form>
+  </section>
+  <div id="zonaAdmin" hidden>
+    <div class="botones" style="margin-bottom:18px"><button type="button" class="cancelar" id="salir">Cerrar sesión</button></div>
+  <section class="panel">
+
+    <h2 id="tituloFormulario">
+      ➕ Agregar publicación
+    </h2>
+
+    <form id="formulario">
+
+      <div class="formulario">
+
+        <div class="campo">
+          <label for="nombre">Nombre</label>
+          <input
+            id="nombre"
+            type="text"
+            placeholder="Nombre de la publicación"
+            required
+            maxlength="100"
+          >
+        </div>
+
+        <div class="campo">
+          <label for="categoria">Categoría</label>
+
+          <select id="categoria" required>
+            <option value="Shinys">✨ Shinys</option>
+            <option value="Legendarios">🏆 Legendarios</option>
+            <option value="Fondo">🌄 Fondo</option>
+            <option value="Fondo/Shiny">🌟 Fondo/Shiny</option>
+            <option value="Evento">🎟️ Evento</option>
+            <option value="Cuentas">👤 Cuentas</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="precio">Precio MXN</label>
+          <input
+            id="precio"
+            type="number"
+            min="0"
+            step="1"
+            placeholder="Ejemplo: 150"
+            required
+          >
+        </div>
+
+        <div class="campo">
+          <label for="disponibilidad">
+            Disponibilidad
+          </label>
+
+          <select id="disponibilidad">
+            <option value="Disponible">Disponible</option>
+            <option value="Agotado">Agotado</option>
+          </select>
+        </div>
+
+        <div class="campo completo">
+          <label for="descripcion">
+            Descripción
+          </label>
+
+          <textarea
+            id="descripcion"
+            placeholder="Escribe las características de la publicación"
+            required
+            maxlength="1500"
+          ></textarea>
+        </div>
+
+        <div class="campo completo">
+          <label for="imagen">
+            Imagen de la publicación
+          </label>
+
+          <input
+            id="imagen"
+            type="file"
+            accept="image/png,image/jpeg,image/webp"
+          >
+
+          <small>
+            Imágenes JPG, PNG o WEBP de máximo 250 KB. Se guardarán en Firestore; para imágenes grandes necesitaremos Storage.
+          </small>
+
+          <div class="vista-imagen" id="vistaImagen">
+            Sin imagen
+          </div>
+        </div>
+
+      </div>
+
+      <div class="botones">
+
+        <button type="submit" class="guardar" id="guardar">
+          💾 Guardar publicación
+        </button>
+
+        <button type="button" class="cancelar" id="cancelar">
+          Cancelar
+        </button>
+
+        <a href="index.html" class="enlace">
+          🌐 Ver tienda
+        </a>
+
+      </div>
+
+    </form>
+
+  </section>
+
+  <section class="panel">
+
+    <h2>📦 Publicaciones registradas</h2>
+
+    <p class="contador" id="contador">
+      0 publicaciones
+    </p>
+
+    <div class="lista" id="lista"></div>
+
+  </section>
+  </div>
+</main>
+
+<script type="module">
+import { auth, db } from './firebaseConfig.js';
+import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js';
+import { collection, doc, setDoc, deleteDoc, onSnapshot } from 'https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js';
+
+const productosRef = collection(db, 'productos');
+const formulario = document.getElementById('formulario');
+const lista = document.getElementById('lista');
+const imagenInput = document.getElementById('imagen');
+const vistaImagen = document.getElementById('vistaImagen');
+const estado = document.getElementById('estado');
+const zonaAdmin = document.getElementById('zonaAdmin');
+const panelLogin = document.getElementById('panelLogin');
+const guardar = document.getElementById('guardar');
+let publicaciones = [];
+let editandoId = null;
+let imagenActual = '';
+let desuscribir = null;
+let puedeAdministrar = false;
+
+function mensaje(texto) { estado.textContent = texto; }
+function mostrarImagen(imagen) {
+  vistaImagen.replaceChildren();
+  if (!imagen) { vistaImagen.textContent = 'Sin imagen'; return; }
+  const img = document.createElement('img');
+  img.src = imagen;
+  img.alt = 'Vista previa';
+  vistaImagen.appendChild(img);
+}
+imagenInput.addEventListener('change', () => {
+  const archivo = imagenInput.files[0];
+  if (!archivo) return;
+  if (!['image/jpeg','image/png','image/webp'].includes(archivo.type) || archivo.size > 250*1024) {
+    alert('Selecciona una imagen JPG, PNG o WEBP de hasta 250 KB.');
+    imagenInput.value = '';
+    return;
+  }
+  const lector = new FileReader();
+  lector.onload = () => { imagenActual = lector.result; mostrarImagen(imagenActual); };
+  lector.readAsDataURL(archivo);
+});
+
+document.getElementById('loginForm').addEventListener('submit', async (evento) => {
+  evento.preventDefault();
+  const correo = document.getElementById('correo').value.trim();
+  const clave = document.getElementById('clave').value;
+  try {
+    await signInWithEmailAndPassword(auth, correo, clave);
+    document.getElementById('clave').value = '';
+  } catch (error) {
+    console.error(error);
+    mensaje('No se pudo iniciar sesión. Comprueba tus datos y Authentication.');
+  }
+});
+document.getElementById('salir').addEventListener('click', () => signOut(auth));
+
+onAuthStateChanged(auth, user => {
+  if (desuscribir) { desuscribir(); desuscribir = null; }
+  publicaciones = [];
+  puedeAdministrar = false;
+  zonaAdmin.hidden = true;
+  panelLogin.hidden = !!user;
+  if (!user) { mensaje('🔐 Inicia sesión para administrar las publicaciones.'); return; }
+  mensaje('⏳ Verificando permisos del administrador…');
+  desuscribir = onSnapshot(productosRef, snapshot => {
+    // La lectura pública por sí sola no demuestra permisos de escritura.
+    // La seguridad real la comprueban las reglas al guardar o eliminar.
+    publicaciones = snapshot.docs.map(d => ({...d.data(), id:d.id}));
+    publicaciones.sort((a,b) => (b.fecha || '').localeCompare(a.fecha || ''));
+    puedeAdministrar = true;
+    zonaAdmin.hidden = false;
+    mensaje('✅ Sesión iniciada. Las publicaciones se sincronizan con Firestore.');
+    mostrarPublicaciones();
+  }, error => {
+    console.error(error);
+    mensaje('Error al consultar Firestore. Comprueba la base de datos y sus reglas.');
+  });
+});
+
+formulario.addEventListener('submit', async evento => {
+  evento.preventDefault();
+  if (!auth.currentUser || !puedeAdministrar) return;
+  const nombre = document.getElementById('nombre').value.trim();
+  const categoria = document.getElementById('categoria').value;
+  const precio = Number(document.getElementById('precio').value);
+  const descripcion = document.getElementById('descripcion').value.trim();
+  const disponibilidad = document.getElementById('disponibilidad').value;
+  if (!nombre || !descripcion || !Number.isFinite(precio) || precio < 0) {
+    alert('Revisa los datos de la publicación.'); return;
+  }
+  const id = editandoId || crypto.randomUUID();
+  const anterior = publicaciones.find(p => p.id === id);
+  const publicacion = {
+    nombre, categoria, precio, descripcion, disponibilidad,
+    imagen: imagenActual,
+    fecha: anterior?.fecha || new Date().toISOString()
+  };
+  guardar.disabled = true;
+  try {
+    await setDoc(doc(db, 'productos', id), publicacion);
+    alert(editandoId ? 'Publicación actualizada.' : 'Publicación guardada en Firebase.');
+    limpiarFormulario();
+  } catch (error) {
+    console.error(error);
+    alert('Firebase rechazó el guardado. Verifica que el UID en las reglas sea el de tu sesión y que la imagen no supere el límite de Firestore.');
+  } finally { guardar.disabled = false; }
+});
+
+function mostrarPublicaciones() {
+  lista.replaceChildren();
+  document.getElementById('contador').textContent = publicaciones.length + ' publicaciones';
+  if (!publicaciones.length) { lista.textContent = 'Todavía no has agregado publicaciones.'; return; }
+  publicaciones.forEach(producto => {
+    const tarjeta = document.createElement('article'); tarjeta.className = 'producto';
+    if (producto.imagen) {
+      const img = document.createElement('img'); img.src = producto.imagen; img.alt = producto.nombre;
+      tarjeta.appendChild(img);
+    } else {
+      const sin = document.createElement('div'); sin.className = 'sin-imagen'; sin.textContent = '🎮'; tarjeta.appendChild(sin);
+    }
+    const contenido = document.createElement('div'); contenido.className = 'producto-info';
+    const titulo = document.createElement('h3'); titulo.textContent = producto.nombre;
+    const categoria = document.createElement('p'); categoria.textContent = 'Categoría: ' + producto.categoria;
+    const descripcion = document.createElement('p'); descripcion.textContent = producto.descripcion;
+    const estadoP = document.createElement('p'); estadoP.textContent = 'Estado: ' + producto.disponibilidad;
+    const precio = document.createElement('div'); precio.className = 'precio';
+    precio.textContent = new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(producto.precio);
+    const acciones = document.createElement('div'); acciones.className = 'acciones';
+    const editar = document.createElement('button'); editar.className = 'editar'; editar.textContent = '✏️ Editar';
+    editar.addEventListener('click', () => editarPublicacion(producto.id));
+    const eliminar = document.createElement('button'); eliminar.className = 'eliminar'; eliminar.textContent = '🗑️ Eliminar';
+    eliminar.addEventListener('click', () => eliminarPublicacion(producto.id));
+    acciones.append(editar, eliminar);
+    contenido.append(titulo,categoria,descripcion,estadoP,precio,acciones);
+    tarjeta.appendChild(contenido); lista.appendChild(tarjeta);
+  });
+}
+function editarPublicacion(id) {
+  const p = publicaciones.find(item => item.id === id); if (!p) return;
+  editandoId = id;
+  for (const campo of ['nombre','categoria','precio','descripcion','disponibilidad']) {
+    document.getElementById(campo).value = p[campo];
+  }
+  imagenActual = p.imagen || ''; mostrarImagen(imagenActual);
+  document.getElementById('tituloFormulario').textContent = '✏️ Editar publicación';
+  guardar.textContent = '💾 Guardar cambios';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+async function eliminarPublicacion(id) {
+  if (!confirm('¿Seguro que deseas eliminar esta publicación?')) return;
+  try {
+    await deleteDoc(doc(db,'productos',id));
+    if (editandoId === id) limpiarFormulario();
+  } catch (error) {
+    console.error(error); alert('No se pudo eliminar. Comprueba los permisos de Firestore.');
+  }
+}
+function limpiarFormulario() {
+  formulario.reset(); editandoId = null; imagenActual = ''; imagenInput.value = '';
+  mostrarImagen('');
+  document.getElementById('tituloFormulario').textContent = '➕ Agregar publicación';
+  guardar.textContent = '💾 Guardar publicación';
+}
+document.getElementById('cancelar').addEventListener('click', limpiarFormulario);
+</script>
+
+</body>
+</html>

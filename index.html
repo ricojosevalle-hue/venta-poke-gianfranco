@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#080d1c"
+  >
+
+  <meta
+    name="description"
+    content="Catálogo de Venta Poke-Gianfranco."
+  >
+
+  <title>Venta Poke-Gianfranco</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="encabezado">
+
+    <div class="marca">
+      <div class="marca-icono">⚡</div>
+
+      <div>
+        <h1>POKE-GIANFRANCO</h1>
+        <span>CATÁLOGO DIGITAL</span>
+      </div>
+    </div>
+
+    <button
+      class="boton-menu"
+      id="botonMenu"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+    <nav class="navegacion" id="navegacion">
+      <a href="#inicio">Inicio</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#categorias">Categorías</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+  </header>
+
+
+  <!-- PORTADA -->
+  <main>
+
+    <section class="portada" id="inicio">
+
+      <div class="portada-contenido">
+
+        <div class="etiqueta">
+          ⚡ CATÁLOGO POKÉMON GO
+        </div>
+
+        <div class="logo-contenedor">
+          <img
+            src="imagenes/logo.png"
+            alt="Logo de Venta Poke-Gianfranco"
+            class="logo-principal"
+            id="logoPrincipal"
+          >
+        </div>
+
+        <h2>
+          VENTA
+          <span>POKE-GIANFRANCO</span>
+        </h2>
+
+        <p>
+          Explora nuestro catálogo de Pokémon
+          shiny, legendarios, fondos especiales
+          y eventos.
+        </p>
+
+        <div class="portada-botones">
+
+          <a href="#catalogo" class="boton-principal">
+            🔎 Explorar catálogo
+          </a>
+
+          <a href="#contacto" class="boton-secundario">
+            💬 Contacto
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INFORMACIÓN -->
+    <section class="informacion">
+
+      <div class="informacion-tarjeta">
+        <span>✨</span>
+        <strong>Pokémon especiales</strong>
+        <p>Explora nuestras categorías</p>
+      </div>
+
+      <div class="informacion-tarjeta">
+        <span>🌟</span>
+        <strong>Catálogo actualizado</strong>
+        <p>Consulta las publicaciones</p>
+      </div>
+
+      <div class="informacion-tarjeta">
+        <span>💬</span>
+        <strong>Contacto directo</strong>
+        <p>Solicita información</p>
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORÍAS -->
+    <section class="seccion categorias" id="categorias">
+
+      <div class="titulo-seccion">
+        <span>EXPLORA</span>
+        <h2>Nuestras categorías</h2>
+        <p>Selecciona lo que deseas encontrar.</p>
+      </div>
+
+      <div class="categorias-grid">
+
+        <button class="categoria activa" data-categoria="Todos">
+          <span>🎮</span>
+          <strong>Todos</strong>
+        </button>
+
+        <button class="categoria" data-categoria="Shinys">
+          <span>✨</span>
+          <strong>Shinys</strong>
+        </button>
+
+        <button class="categoria" data-categoria="Legendarios">
+          <span>🏆</span>
+          <strong>Legendarios</strong>
+        </button>
+
+        <button class="categoria" data-categoria="Fondo">
+          <span>🌄</span>
+          <strong>Fondo</strong>
+        </button>
+
+        <button class="categoria" data-categoria="Fondo/Shiny">
+          <span>🌟</span>
+          <strong>Fondo/Shiny</strong>
+        </button>
+
+        <button class="categoria" data-categoria="Evento">
+          <span>🎟️</span>
+          <strong>Evento</strong>
+        </button>
+
+        <button class="categoria" data-categoria="Cuentas">
+          <span>👤</span>
+          <strong>Cuentas</strong>
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- CATÁLOGO -->
+    <section class="seccion catalogo" id="catalogo">
+
+      <div class="titulo-seccion">
+        <span>NUESTRO CATÁLOGO</span>
+        <h2>Explora las publicaciones</h2>
+        <p>Encuentra lo que estás buscando.</p>
+      </div>
+
+      <div class="herramientas">
+
+        <div class="buscador">
+          <span>🔎</span>
+
+          <input
+            type="search"
+            id="buscador"
+            placeholder="Buscar por nombre..."
+            autocomplete="off"
+          >
+        </div>
+
+        <select id="ordenar" aria-label="Ordenar catálogo">
+          <option value="recientes">Más recientes</option>
+          <option value="nombre">Nombre A-Z</option>
+          <option value="menor">Menor precio</option>
+          <option value="mayor">Mayor precio</option>
+        </select>
+
+      </div>
+
+      <div class="resultado-info">
+        <p id="contador">Cargando catálogo...</p>
+      </div>
+
+      <div class="productos-grid" id="productosGrid">
+      </div>
+
+      <div class="sin-resultados oculto" id="sinResultados">
+        <div>🔎</div>
+        <h3>No encontramos resultados</h3>
+        <p>Prueba con otro nombre o categoría.</p>
+        <button id="limpiarFiltros">
+          Ver todos
+        </button>
+      </div>
+
+    </section>
+
+
+    <!-- CONTACTO -->
+    <section class="seccion contacto" id="contacto">
+
+      <div class="contacto-caja">
+
+        <span class="contacto-icono">💬</span>
+
+        <h2>¿Necesitas información?</h2>
+
+        <p>
+          Consulta los detalles de nuestras
+          publicaciones mediante WhatsApp.
+        </p>
+
+        <button
+          class="boton-principal"
+          id="botonWhatsappGeneral"
+        >
+          Contactar por WhatsApp
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="pie">
+
+    <h3>⚡ POKE-GIANFRANCO</h3>
+
+    <p>Catálogo digital independiente.</p>
+
+    <p class="aviso">
+      Sitio no oficial. No afiliado ni patrocinado
+      por los propietarios de Pokémon GO.
+    </p>
+
+    <p>
+      © <span id="anio"></span>
+      Venta Poke-Gianfranco.
+    </p>
+
+  </footer>
+
+
+  <!-- VENTANA DE DETALLES -->
+  <div class="modal oculto" id="modal">
+
+    <div class="modal-fondo" id="modalFondo"></div>
+
+    <div
+      class="modal-contenido"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitulo"
+    >
+
+      <button
+        class="modal-cerrar"
+        id="cerrarModal"
+        aria-label="Cerrar detalles"
+      >
+        ✕
+      </button>
+
+      <div class="modal-imagen" id="modalImagen"></div>
+
+      <div class="modal-informacion">
+
+        <span class="modal-categoria" id="modalCategoria"></span>
+
+        <h2 id="modalTitulo"></h2>
+
+        <p id="modalDescripcion"></p>
+
+        <div class="modal-datos" id="modalDatos"></div>
+
+        <div class="modal-precio" id="modalPrecio"></div>
+
+        <button
+          class="boton-principal"
+          id="modalWhatsapp"
+        >
+          💬 Solicitar información
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CONEXIÓN CON JAVASCRIPT Y FIREBASE -->
+  <script type="module" src="script.js"></script>
+
+</body>
+</html>
