@@ -1352,3 +1352,257 @@ a {
   }
 
 }
+ /* =====================================
+   MÉTODOS DE PAGO
+===================================== */
+
+.metodos-pago {
+  padding: 65px 20px;
+  background: #080d1c;
+  text-align: center;
+}
+
+.pagos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 1050px;
+  margin: 35px auto;
+}
+
+.pago-tarjeta {
+  background: linear-gradient(
+    145deg,
+    #152345,
+    #0b142b
+  );
+
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  border-radius: 18px;
+  padding: 28px 15px;
+  transition: transform 0.3s ease;
+}
+
+.pago-tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+.pago-icono {
+  display: block;
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.pago-tarjeta h3 {
+  color: #ffd700;
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.pago-tarjeta p {
+  color: #c4cde0;
+  font-size: 14px;
+}
+
+.pagos-aviso {
+  max-width: 750px;
+  margin: 20px auto;
+  color: #b8c5df;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =====================================
+   GRUPO DE WHATSAPP
+===================================== */
+
+.comunidad {
+  padding: 60px 20px;
+  background: #0b142b;
+  text-align: center;
+}
+
+.comunidad-caja {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 25px;
+
+  background: linear-gradient(
+    135deg,
+    #102449,
+    #091328
+  );
+
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  border-radius: 22px;
+}
+
+.comunidad-icono {
+  display: block;
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.comunidad-caja h2 {
+  color: #ffffff;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.comunidad-caja p {
+  color: #c4cde0;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.boton-grupo-whatsapp {
+  display: inline-block;
+  max-width: 100%;
+
+  padding: 16px 25px;
+  background: #25d366;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+
+  border-radius: 12px;
+  transition: background 0.3s ease;
+}
+
+.boton-grupo-whatsapp:hover {
+  background: #1da851;
+}
+
+
+/* =====================================
+   ADAPTACIÓN A CELULARES
+===================================== */
+
+@media (max-width: 768px) {
+
+  .pagos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .pago-tarjeta {
+    padding: 22px 10px;
+  }
+
+  .pago-tarjeta h3 {
+    font-size: 18px;
+  }
+
+  .comunidad-caja {
+    padding: 30px 15px;
+  }
+
+  .comunidad-caja h2 {
+    font-size: 23px;
+  }
+
+  .boton-grupo-whatsapp {
+    font-size: 13px;
+    padding: 15px 12px;
+  }
+
+}
+
+
+  /* =====================================
+   CORRECCIÓN DE TAMAÑO DE LOGOTIPOS
+===================================== */
+
+.pagos-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 15px !important;
+  max-width: 1050px !important;
+  margin: 35px auto !important;
+}
+
+.pago-tarjeta {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 210px !important;
+  box-sizing: border-box !important;
+  padding: 20px 12px !important;
+}
+
+.pago-logo-contenedor {
+  width: 120px !important;
+  height: 90px !important;
+  max-width: 100% !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.pago-logo-contenedor img,
+.pago-logo {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* CELULARES */
+
+@media (max-width: 768px) {
+
+  .pagos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .pago-tarjeta {
+    min-height: 190px !important;
+    padding: 15px 8px !important;
+  }
+
+  .pago-logo-contenedor {
+    width: 100px !important;
+    height: 75px !important;
+  }
+
+}
+/* =====================================
+   CORRECCIÓN DEL LOGOTIPO DE WHATSAPP
+===================================== */
+
+.whatsapp-logo-contenedor {
+  width: 100px !important;
+  height: 100px !important;
+  max-width: 100% !important;
+  margin: 0 auto 20px !important;
+  padding: 15px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  border-radius: 50% !important;
+}
+
+.whatsapp-logo-contenedor img,
+.whatsapp-logo {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* CELULARES */
+
+@media (max-width: 768px) {
+  .whatsapp-logo-contenedor {
+    width: 85px !important;
+    height: 85px !important;
+    padding: 12px !important;
+  }
+}

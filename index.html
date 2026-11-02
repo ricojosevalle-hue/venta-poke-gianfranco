@@ -51,14 +51,16 @@
       <a href="#catalogo">Catálogo</a>
       <a href="#categorias">Categorías</a>
       <a href="#contacto">Contacto</a>
+      <a href="#metodosPago">Pagos</a>
     </nav>
 
   </header>
 
 
-  <!-- PORTADA -->
+  <!-- CONTENIDO PRINCIPAL -->
   <main>
 
+    <!-- PORTADA -->
     <section class="portada" id="inicio">
 
       <div class="portada-contenido">
@@ -254,6 +256,139 @@
 
     </section>
 
+
+  <!-- MÉTODOS DE PAGO -->
+<section class="seccion metodos-pago" id="metodosPago">
+
+  <div class="titulo-seccion">
+    <span>💎 OPCIONES DISPONIBLES</span>
+
+    <h2>💳 Métodos de pago</h2>
+
+    <p>
+      Compra con el método que prefieras.
+      Los precios del catálogo se muestran
+      en dólares estadounidenses (USD).
+    </p>
+  </div>
+
+  <div class="pagos-grid">
+
+    <!-- YAPE -->
+    <div class="pago-tarjeta">
+      <div class="pago-logo-contenedor">
+        <img
+          src="imagenes/yape.png"
+          alt="Logotipo de Yape"
+          class="pago-logo"
+          loading="lazy"
+        >
+      </div>
+
+      <h3>Yape</h3>
+      <p>Pagos en Perú 🇵🇪</p>
+    </div>
+
+    <!-- PLIN -->
+    <div class="pago-tarjeta">
+      <div class="pago-logo-contenedor">
+        <img
+          src="imagenes/plin.jpg"
+          alt="Logotipo de Plin"
+          class="pago-logo"
+          loading="lazy"
+        >
+      </div>
+
+      <h3>Plin</h3>
+      <p>Pagos en Perú 🇵🇪</p>
+    </div>
+
+    <!-- PAYPAL -->
+    <div class="pago-tarjeta">
+      <div class="pago-logo-contenedor">
+        <img
+          src="imagenes/paypal.png"
+          alt="Logotipo de PayPal"
+          class="pago-logo"
+          loading="lazy"
+        >
+      </div>
+
+      <h3>PayPal</h3>
+      <p>Pagos internacionales 🌎</p>
+    </div>
+
+    <!-- ZELLE -->
+    <div class="pago-tarjeta">
+      <div class="pago-logo-contenedor">
+        <img
+          src="imagenes/zelle.png"
+          alt="Logotipo de Zelle"
+          class="pago-logo"
+          loading="lazy"
+        >
+      </div>
+
+      <h3>Zelle</h3>
+      <p>Consulta disponibilidad 🇺🇸</p>
+    </div>
+
+  </div>
+
+  <p class="pagos-aviso">
+    🔒 Antes de realizar cualquier pago,
+    consulta por WhatsApp los datos,
+    las monedas aceptadas y la disponibilidad
+    de cada método.
+  </p>
+
+</section>
+
+
+<!-- COMUNIDAD DE WHATSAPP -->
+<section class="seccion comunidad" id="comunidad">
+
+  <div class="comunidad-caja comunidad-premium">
+
+    <div class="whatsapp-logo-contenedor">
+      <img
+        src="imagenes/whatsapp.png"
+        alt="WhatsApp"
+        class="whatsapp-logo"
+        loading="lazy"
+      >
+    </div>
+
+    <span class="comunidad-etiqueta">
+      🎮 COMUNIDAD POKE-GIANFRANCO
+    </span>
+
+    <h2>¡Únete a nuestra comunidad Pokémon GO!</h2>
+
+    <p>
+      Descubre novedades, consulta nuestros
+      productos disponibles y mantente al tanto
+      de las nuevas publicaciones.
+    </p>
+
+    <a
+      href="https://chat.whatsapp.com/JKNkK2fg4UKF37QVV8158Z?s=cl&p=a&iam=2"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="boton-grupo-whatsapp boton-grupo-premium"
+    >
+      💬 ENTRAR AL GRUPO DE WHATSAPP
+    </a>
+
+    <p class="comunidad-frase">
+      ✨ ¡La próxima gran captura podría estar esperándote!
+    </p>
+
+  </div>
+
+</section>
+
   </main>
 
 
@@ -301,15 +436,24 @@
 
       <div class="modal-informacion">
 
-        <span class="modal-categoria" id="modalCategoria"></span>
+        <span
+          class="modal-categoria"
+          id="modalCategoria"
+        ></span>
 
         <h2 id="modalTitulo"></h2>
 
         <p id="modalDescripcion"></p>
 
-        <div class="modal-datos" id="modalDatos"></div>
+        <div
+          class="modal-datos"
+          id="modalDatos"
+        ></div>
 
-        <div class="modal-precio" id="modalPrecio"></div>
+        <div
+          class="modal-precio"
+          id="modalPrecio"
+        ></div>
 
         <button
           class="boton-principal"
@@ -317,6 +461,22 @@
         >
           💬 Solicitar información
         </button>
+
+        <!-- BOTÓN DEL GRUPO -->
+        <a
+          href="https://chat.whatsapp.com/JKNkK2fg4UKF37QVV8158Z?s=cl&p=a&iam=2"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="boton-principal"
+          style="
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            text-decoration: none;
+          "
+        >
+          👥 Únete a nuestro grupo de WhatsApp
+        </a>
 
       </div>
 
